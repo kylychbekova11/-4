@@ -1,0 +1,6 @@
+DECLARE my_cursor CURSOR FOR
+         SELECT SaladName FROM Salads;
+     OPEN my_cursor;
+     FETCH NEXT FROM my_cursor INTO @salad_name;
+     CLOSE my_cursor;
+     DEALLOCATE my_cursor;

@@ -1,0 +1,7 @@
+CREATE FUNCTION GetAveragePreparationTime()
+     RETURNS INT
+     BEGIN
+         DECLARE avg_time INT;
+         SELECT AVG(PreparationTime) INTO avg_time FROM Salads;
+         RETURN avg_time;
+     END;

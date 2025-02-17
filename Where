@@ -1,0 +1,9 @@
+--Внутреннее соединение для получения данных о заказах с деталями о клиентах
+
+--Предположим, что у нас есть таблицы Orders (заказы) и Customers (клиенты), и мы хотим получить информацию о заказах, а также имя клиента, который сделал заказ. Мы будем использовать INNER JOIN и фильтрацию с WHERE.
+
+sql
+SELECT o.OrderID, o.CustomerID, o.SaladID, o.OrderDate, c.FirstName
+FROM Orders o
+INNER JOIN Customers c ON o.CustomerID = c.CustomerID
+WHERE o.OrderDate = '2025-02-17';

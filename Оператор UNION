@@ -1,0 +1,6 @@
+-- Список салатов, которые готовят повара с опытом более 5 лет
+SELECT s.SaladName
+FROM Chefs c
+JOIN ChefSalad cs ON c.ChefID = cs.ChefID
+JOIN Salads s ON cs.SaladID = s.SaladID
+WHERE c.ExperienceYears > 5

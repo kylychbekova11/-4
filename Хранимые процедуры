@@ -1,0 +1,6 @@
+CREATE PROCEDURE GetChefSalads (IN chef_id INT)
+     BEGIN
+         SELECT SaladName
+         FROM Salads
+         WHERE SaladID IN (SELECT SaladID FROM ChefSalad WHERE ChefID = chef_id);
+     END;

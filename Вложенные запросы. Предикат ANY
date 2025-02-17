@@ -1,0 +1,8 @@
+--Выборка салатов, время приготовления которых меньше самого долгого времени приготовления салата у повара “Мария Петрова”
+SELECT * FROM Salads  
+WHERE PreparationTime < ANY (  
+    SELECT PreparationTime FROM Salads  
+    JOIN ChefSalad ON Salads.SaladID = ChefSalad.SaladID  
+    JOIN Chefs ON ChefSalad.ChefID = Chefs.ChefID  
+    WHERE Chefs.ChefName = 'Мария Петрова'  
+);

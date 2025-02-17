@@ -1,0 +1,70 @@
+SaladID INT NOT NULL,
+    OrderDate DATE NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE,
+    FOREIGN KEY (SaladID) REFERENCES Salads(SaladID) ON DELETE CASCADE
+);
+
+-- Добавление данных о поварах
+INSERT INTO Chefs (ChefName, ExperienceYears) VALUES
+('Иван Иванов', 5),
+('Мария Петрова', 10),
+('Алексей Сидоров', 3),
+('Ольга Кузнецова', 7),
+('Дмитрий Васильев', 2);
+
+-- Добавление данных о салатах
+INSERT INTO Salads (SaladName, Ingredients, PreparationTime) VALUES
+('Цезарь', 'Курица, салат айсберг, сухарики, пармезан, соус Цезарь', 20),
+('Греческий', 'Помидоры, огурцы, оливки, фета, лук, оливковое масло', 15),
+('Оливье', 'Картофель, морковь, горошек, колбаса, яйца, майонез', 30),
+('Крабовый', 'Крабовые палочки, кукуруза, яйца, рис, майонез', 25),
+('Мимоза', 'Рыба консервированная, картофель, морковь, яйца, майонез', 30),
+('Винегрет', 'Свекла, картофель, морковь, квашеная капуста, лук, масло', 20),
+('Сельдь под шубой', 'Сельдь, картофель, свекла, морковь, яйца, майонез', 40),
+('Капрезе', 'Помидоры, моцарелла, базилик, оливковое масло', 10),
+('Теплый салат с курицей', 'Курица, шпинат, грибы, помидоры, сыр', 25),
+('Фруктовый салат', 'Яблоки, бананы, апельсины, киви, йогурт', 15);
+
+-- Добавление связи между поварами и салатами
+INSERT INTO ChefSalad (ChefID, SaladID) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(3, 5),
+(3, 6),
+(4, 7),
+(4, 8),
+(5, 9),
+(5, 10);
+
+-- Добавление клиентов
+INSERT INTO Customers (FirstName) VALUES
+('Алексей'),
+('Мария'),
+('Иван'),
+('Ольга');
+
+-- Добавление заказов
+INSERT INTO Orders (CustomerID, SaladID, OrderDate) VALUES
+(1, 1, '2025-02-17'),
+(2, 3, '2025-02-18'),
+(3, 5, '2025-02-19'),
+(4, 7, '2025-02-20');
+
+
+3. Пример запроса для получения данных из нескольких таблиц
+
+sql
+-- Пример запроса для вывода списка поваров и салатов, которые они готовят
+SELECT c.ChefName, s.SaladName
+FROM Chefs c
+JOIN ChefSalad cs ON c.ChefID = cs.ChefID
+JOIN Salads s ON cs.SaladID = s.SaladID;
+
+-- Пример запроса для получения информации о заказах (клиенты и их заказы)
+SELECT cu.FirstName, s.SaladName, o.OrderDate
+FROM Orders o
+JOIN Customers cu ON o.CustomerID = cu.CustomerID
+JOIN Salads s ON o.SaladID = s.SaladID;
+```

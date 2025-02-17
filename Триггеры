@@ -1,0 +1,6 @@
+- Пример триггера, который обновляет дату последнего изменения при обновлении записи:
+
+     CREATE TRIGGER UpdateLastModified
+     BEFORE UPDATE ON Salads
+     FOR EACH ROW
+     SET NEW.LastModified = NOW();

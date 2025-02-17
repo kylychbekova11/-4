@@ -1,0 +1,8 @@
+--Выборка поваров с указанием их специализации по салатам
+
+SELECT ChefName,  
+       (SELECT SaladName FROM Salads  
+        JOIN ChefSalad ON Salads.SaladID = ChefSalad.SaladID  
+        WHERE Chefs.ChefID = ChefSalad.ChefID  
+        LIMIT 1) AS Specialization  
+FROM Chefs;

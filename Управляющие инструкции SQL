@@ -1,0 +1,5 @@
+IF EXISTS (SELECT * FROM Salads WHERE SaladName = 'Цезарь') THEN
+         SELECT 'Салат найден';
+     ELSE
+         SELECT 'Салат не найден';
+     END IF;

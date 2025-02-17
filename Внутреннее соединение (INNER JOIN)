@@ -1,0 +1,4 @@
+SELECT c.ChefName, s.SaladName
+FROM Chefs c
+INNER JOIN ChefSalad cs ON c.ChefID = cs.ChefID
+INNER JOIN Salads s ON cs.SaladID = s.SaladID;
